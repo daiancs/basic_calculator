@@ -1,4 +1,5 @@
 <RootApplication>:
+    id: root_app
     orientation: "vertical"
     FloatInput:
         id: edt_value
@@ -11,15 +12,19 @@
         Button:
             text: "CE"
             background_color: (.85, .85, .85, 1)
+            on_release: root.clear_entry()
         Button:
             text: "C"
             background_color: (.85, .85, .85, 1)
+            on_release: root.clear()
         Button:
             text: "<-"
             background_color: (.85, .85, .85, 1)
+            on_release: root.ids["edt_value"].do_backspace()
         Button:
             text: "/"
             background_color: (.85, .85, .85, 1)
+            on_release: root.do_calc("div")
         Button:
             text: "7"
             on_release: root.digit_click(self.text)
@@ -32,6 +37,7 @@
         Button:
             text: "X"
             background_color: (.85, .85, .85, 1)
+            on_release: root.do_calc("mult")
         Button:
             text: "4"
             on_release: root.digit_click(self.text)
@@ -44,6 +50,7 @@
         Button:
             text: "-"
             background_color: (.85, .85, .85, 1)
+            on_release: root.do_calc("sub")
         Button:
             text: "1"
             on_release: root.digit_click(self.text)
@@ -56,9 +63,11 @@
         Button:
             text: "+"
             background_color: (.85, .85, .85, 1)
+            on_release: root.do_calc("add")
         Button:
             text: "+/-"
             background_color: (.85, .85, .85, 1)
+            on_release: root.plus_minus()
         Button:
             text: "0"
             on_release: root.digit_click(self.text)
@@ -69,3 +78,4 @@
         Button:
             text: "="
             background_color: (.85, .85, .85, 1)
+            on_release: root.do_calc("eq")
